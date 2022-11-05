@@ -65,12 +65,11 @@ body * {
 }
 
 header {
-    margin-bottom: 32px;
     text-align: center;
 }
 
 header .logo {
-    width: 140px;
+    width: 120px;
 }
 
 #cards {
@@ -187,12 +186,32 @@ header .logo {
         flex-wrap: wrap;
         align-items: flex-start;
     }
+
 }
 
-.swiper-wrapper {
+.swiper {
     max-width: 1012px;
+    padding-top: 80px !important;
+    margin-top: -72px;
+}
+
+@media (max-width: 525px) {
+    .swiper {
+        max-width: 320px;
+        padding-inline: 15px;
+    }
+
 }
 
 .swiper-button-next::after, .swiper-button-prev::after {
     content: "" !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    top: 24px !important;
+    z-index: 9999 !important;
+    background: #E1E1E6;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 6px;
 }
