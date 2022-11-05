@@ -94,8 +94,6 @@ header .logo {
 
 #menu ul li {
     display: flex;
-    align-items: stretch;
-    white-space: nowrap;
 }
 
 #menu ul li:hover svg {
