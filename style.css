@@ -9,7 +9,7 @@
     --secondary-color: #8a1538;
     --card-border-title-color: #8a1538;
     --card-color-primary: #b61c4a; 
-    --card-bg-color:#EEEEE4;
+    --card-bg-color:#E1E1E6;
     --bg: url(./assets/bg-red-light.jpg);
 }
 
@@ -92,24 +92,21 @@ header .logo {
     z-index: 9999;
 }
 
-#menu ul li {
-    display: flex;
-}
-
-#menu ul li:hover svg {
-    fill: #8a1538; 
-}
-
 #menu ul li svg {
     width: 20px;
     height: 40px;
     fill: #E1E1E6;
 }
 
+#menu ul li:hover svg {
+    fill: #8a1538; 
+}
+
 #menu ul li a {
     font-size: 14px;
     font-weight: 700;;
     text-transform: uppercase;
+    display: flex;
 }
 
 .btn.btn-primary {
