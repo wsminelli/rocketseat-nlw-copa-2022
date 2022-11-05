@@ -77,11 +77,13 @@ header .logo {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    align-items: center;
 }
 
 .card {
     padding: 32px 23px;
     text-align: center;
+    width: fit-content;
     background: var(--card-bg-color);
     border-bottom: 2px solid var(--card-color-primary);
     border-radius: 6px;
@@ -183,5 +185,14 @@ header .logo {
         max-width: 1170px;
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: flex-start;
     }
+}
+
+.swiper-wrapper {
+    max-width: 1012px;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    content: "" !important;
 }

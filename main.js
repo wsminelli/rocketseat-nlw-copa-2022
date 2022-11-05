@@ -18,7 +18,7 @@ let delay = -0.4;
 function createCard(date, day, games) {
     delay = delay + 0.4;
     return `
-    <div class="card" style="animation-delay: ${delay}s">
+    <div class="card swiper-slide" style="animation-delay: ${delay}s">
         <h2>${date}<span>${day}</span></h2>
         <ul>
             ${games}
@@ -28,25 +28,35 @@ function createCard(date, day, games) {
     `
 }
 
-document.querySelector("#cards").innerHTML = 
-   
-    createCard('24/11', 'quinta',
-    createGame('switzerland', '07:00', 'cameroon') +
-    createGame('uruguay', '10:00', 'south korea') +
-    createGame('portugal', '13:00', 'ghana') +
-    createGame('brazil', '16:00', 'serbia')
-    ) +
+document.querySelector("#cards").innerHTML = `
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            ${createCard('24/11', 'quinta',
+            createGame('switzerland', '07:00', 'cameroon') +
+            createGame('uruguay', '10:00', 'south korea') +
+            createGame('portugal', '13:00', 'ghana') +
+            createGame('brazil', '16:00', 'serbia')
+            )}
 
-    createCard('28/11', 'segunda', 
-    createGame('cameroon', '07:00', 'serbia') +
-    createGame('south korea', '10:00', 'ghana') +
-    createGame('switzerland', '13:00', 'brazil') +
-    createGame('portugal', '16:00', 'uruguay')
-    ) +
+            ${createCard('28/11', 'segunda', 
+            createGame('cameroon', '07:00', 'serbia') +
+            createGame('south korea', '10:00', 'ghana') +
+            createGame('switzerland', '13:00', 'brazil') +
+            createGame('portugal', '16:00', 'uruguay')
+            )}
 
-    createCard('02/12', 'sexta',
-    createGame('south korea', '07:00', 'portugal') +
-    createGame('ghana', '10:00', 'uruguay') +
-    createGame('serbia', '13:00', 'switzerland') + 
-    createGame('brazil', '16:00', 'cameroon')
-    )
+            ${createCard('02/12', 'sexta',
+            createGame('south korea', '07:00', 'portugal') +
+            createGame('ghana', '10:00', 'uruguay') +
+            createGame('serbia', '13:00', 'switzerland') + 
+            createGame('brazil', '16:00', 'cameroon')
+            )}
+        </div>
+        <div class="swiper-button-next">
+            <img src="./assets/arrowRight.svg">
+        </div>
+        <div class="swiper-button-prev">
+            <img src="./assets/arrowLeft.svg">
+        </div>
+    </div>
+`
