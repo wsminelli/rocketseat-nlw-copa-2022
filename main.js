@@ -31,7 +31,10 @@ function createGame(player1, hour, player2) {
                 <img src="./assets/flags/icon-${player1}.svg" alt="Bandeira do ${player1}">
                 <figcaption>${player1}</figcaption>
             </figure>
-            <strong>${hour}</strong>
+            <div class="info">
+                <span>Al Bayt Stadium<br></span>
+                <strong>${hour}</strong>
+            </div>
             <figure> 
                 <img src="./assets/flags/icon-${player2}.svg" alt="Bandeira da ${player2}">
                 <figcaption>${player2}</figcaption>

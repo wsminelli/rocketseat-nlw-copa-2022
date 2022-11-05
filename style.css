@@ -71,6 +71,7 @@ body * {
 
 header {
     text-align: center;
+    user-select: none;
 }
 
 header .logo {
@@ -198,11 +199,23 @@ header .logo {
     border-top: 1px solid #c1c1c1;
 }
 
-.card ul li strong {
+.card ul li .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card ul li .info strong {
     font-weight: 900;
     font-size: 36px;
     line-height: 125%;
     color: var(--secondary-color);
+}
+
+.card ul li .info span {
+    font-size: 12px;
+    line-height: 14px;
+    color: #787878;
 }
 
 .card h2:hover,
@@ -254,6 +267,12 @@ header .logo {
         padding-inline: 15px;
     }
 
+    #menu ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
 
 .swiper-button-next::after, .swiper-button-prev::after {
@@ -267,4 +286,5 @@ header .logo {
     width: 48px !important;
     height: 48px !important;
     border-radius: 6px;
+    user-select: none;
 }
