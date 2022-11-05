@@ -44,6 +44,11 @@ ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+    color: #E1E1E6;
+}
+
 body {
     background-color: #121214;
     background-image: var(--bg);
@@ -70,6 +75,54 @@ header {
 
 header .logo {
     width: 120px;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+#menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 9999;
+}
+
+#menu ul li {
+    display: flex;
+    align-items: stretch;
+    white-space: nowrap;
+}
+
+#menu ul li:hover svg {
+    fill: #8a1538; 
+}
+
+#menu ul li svg {
+    width: 20px;
+    fill: #E1E1E6;
+}
+
+#menu ul li a {
+    font-size: 14px;
+    font-weight: 700;;
+    text-transform: uppercase;
+}
+
+.btn.btn-primary {
+    background: #E1E1E6;
+    display: flex;
+    align-items: center;
+    padding: 0px 2px;
+    color: #8a1538;
+}
+
+#menu ul li:hover .btn.btn-primary {
+    color: #E1E1E6;
+    background: #8a1538;
 }
 
 #cards {
@@ -192,7 +245,7 @@ header .logo {
 .swiper {
     max-width: 1012px;
     padding-top: 80px !important;
-    margin-top: -72px;
+    margin-top: -64px;
 }
 
 @media (max-width: 525px) {
@@ -209,7 +262,7 @@ header .logo {
 
 .swiper-button-next, .swiper-button-prev {
     top: 24px !important;
-    z-index: 9999 !important;
+    z-index: 9997 !important;
     background: #E1E1E6;
     width: 48px !important;
     height: 48px !important;
