@@ -94,6 +94,7 @@ header .logo {
     justify-content: center;
     gap: 12px;
     z-index: 9999;
+    flex-wrap: wrap;
 }
 
 #menu ul li svg {
@@ -254,7 +255,7 @@ header .logo {
     }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 769px) {
     #cards {
         max-width: 1170px;
         flex-direction: row;
@@ -280,6 +281,17 @@ header .logo {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+@media (min-width: 525px) and (max-width: 1012px) {
+    .swiper {
+        max-width: 664px;
+        padding-inline: 15px;
+    }
+
+    #menu ul {
+        max-width: 72%;
     }
 }
 
