@@ -49,6 +49,10 @@ a {
     color: #E1E1E6;
 }
 
+:focus {
+    outline: none !important;
+}
+
 body {
     background-color: #121214;
     background-image: var(--bg);
@@ -100,6 +104,14 @@ header .logo {
 
 #menu ul li:hover svg {
     fill: #8a1538; 
+}
+
+.button-left {
+    transform: translateX(0.4px);
+}
+
+.button-right {
+    transform: translateX(-0.4px);
 }
 
 #menu ul li a {
@@ -199,6 +211,7 @@ header .logo {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 8px;
 }
 
 .card ul li .info strong {
@@ -209,19 +222,19 @@ header .logo {
 }
 
 .card ul li .info span {
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 10px;
+    line-height: 12px;
     color: #787878;
 }
 
 .card h2:hover,
-.card ul li strong:hover, 
+.card ul li .info:hover, 
 .card ul li figure:hover {
     transform: scale(1.1);
 }
 
 .card h2,
-.card ul li strong, 
+.card ul li .info, 
 .card ul li figure {
     transition: transform 0.3s ;
 }
