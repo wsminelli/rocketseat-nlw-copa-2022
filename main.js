@@ -167,13 +167,3 @@ document.querySelector("#cards").innerHTML = `
         </div>
     </div>
 `
-
-let nav = document.querySelector('#menu');
-let menu = document.querySelector('.menu-mobile')
-
-function abrirMenu() {
-  nav.classList.toggle('abrirMenu');
-  menu.classList.toggle('abrirMenu');
-}
-
-menu.onclick = abrirMenu;
