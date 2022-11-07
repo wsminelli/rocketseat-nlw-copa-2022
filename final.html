@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Calendário de jogos da Copa do Mundo no Catar 2022" />
-        <title>Calendário de Jogos - NLW Copa</title>
+        <title>Calendário de Jogos - Final</title>
         <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
         <link rel="stylesheet" href="./style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,41 +19,9 @@
             <img class="logo" src="./assets/logo-qatar-2022.webp" alt="Logo da Copa do Mundo Catar">
             <img src="./assets/logo.svg" alt="Logo da NLW">
         </header>
-        <div class="menu-mobile">
-          <div class="t1"></div>
-          <div class="t2"></div>
-          <div class="t3"></div>
-        </div>
         <nav id="menu"></nav>
-        <main id="cards" class="swiper mySwiper"></main>
+        <main id="cards"></main>
       </div>
-      <script src="./main.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-      <script>
-          var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
-            spaceBetween: 32,
-            loop: true,
-            breakpoints: {
-              320: {
-                  slidesPerView: 1,
-              },
-              640: {
-                  slidesPerView: 2,
-              },
-              1020: {
-                  slidesPerView: 3,
-              },
-            },
-            pagination: {
-              el: ".swiper-pagination",
-              clickable: true,
-            },
-            navigation: {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            },
-          });
-        </script>
+      <script src="./final.js"></script>
     </body>
 </html>

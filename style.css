@@ -135,6 +135,54 @@ header .logo {
     background: #8a1538;
 }
 
+.menu-mobile {
+    width: 32px;
+    height: 32px;
+    float: right;
+    line-height: 48px;
+    cursor:pointer;
+    display: none;
+    align-items: center;
+}
+
+.t1 {
+    position: relative;
+    height: 4px;
+    width: 32px;
+    background-color: white;
+    border-radius: 4px;
+    transition: all ease 0.3s;
+    }
+  
+.t2 {
+    position: relative;
+    height: 4px;
+    width: 32px;
+    background-color: white;
+    border-radius: 4px;
+    transition: all ease 0.3s;
+}
+  
+.t3 {
+    position: relative;
+    height: 4px;
+    width: 32px;
+    background-color: white;
+    border-radius: 4px;    
+}
+  
+.t1 {
+    top: 2px;
+}
+  
+.t2 {
+    top: 8px;
+}
+  
+.t3 {
+    top: 14px;
+}
+
 #cards {
     display: flex;
     flex-direction: column;
@@ -261,6 +309,7 @@ header .logo {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: flex-start;
+        justify-content: center;
     }
 
 }
@@ -277,10 +326,31 @@ header .logo {
         padding-inline: 15px;
     }
 
+    #menu {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        position: absolute;
+        transform: translateY(-400vw);
+        transition: 0.5s;
+        z-index: -5;
+    }
+    
     #menu ul {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .menu-mobile {
+        display:block;   
+    }
+
+    .abrirMenu {
+    transform: translateY(0);
+    transition: 0.5s;
+    z-index: 5;
     }
 }
 
@@ -307,4 +377,15 @@ header .logo {
     height: 48px !important;
     border-radius: 6px;
     user-select: none;
+}
+
+.games {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    margin-top: 32px;
+    max-width: 664px;
 }
