@@ -78,10 +78,6 @@ header {
     user-select: none;
 }
 
-header .logo {
-    width: 120px;
-}
-
 #menu {
     display: flex;
     justify-content: center;
