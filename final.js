@@ -16,7 +16,12 @@ function createMenu(link, fase, nome) {
 }
 
 document.querySelector("#menu").innerHTML = `
-    <ul>
+    <div id="btn-mobile">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#8a1538" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+    </svg>    
+    </div>
+    <ul id="menu-fases">
         ${createMenu("index", "fase-grupo", "Fase de Grupos")}
         ${createMenu("oitavas", "fase-oitavas", "Oitavas de Final")}
         ${createMenu("quartas", "fase-quartas", "Quartas de Final")}
@@ -68,3 +73,12 @@ document.querySelector("#cards").innerHTML = `
         )} 
     </div>
 `
+
+const btnMobile = document.getElementById('btn-mobile');
+
+function toggleMenu () {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('active') 
+}
+
+btnMobile.addEventListener('click', toggleMenu);

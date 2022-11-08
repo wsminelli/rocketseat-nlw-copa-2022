@@ -131,6 +131,14 @@ header {
     background: #8a1538;
 }
 
+#btn-mobile {
+    display: none;
+    background-color: #E1E1E6;
+    padding: 4px 4px 0px 4px;
+    border-radius: 4px;
+    z-index: 9997;
+}
+
 #cards {
     display: flex;
     flex-direction: column;
@@ -296,6 +304,18 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    #btn-mobile {
+        display: block;
+    }
+
+    #menu-fases {
+        display: none !important;
+    }
+
+    #menu.active #menu-fases {
+        display: flex !important;
     }
 }
 
