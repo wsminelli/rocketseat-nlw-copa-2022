@@ -1,6 +1,8 @@
+let atraso = -0.1;
 function createMenu(link, fase, nome) {
+    atraso = atraso + 0.1;
     return `
-        <li>
+        <li style="animation-delay: ${atraso}s">
             <a href="./${link}.html" class="${fase}">
                 <svg class="button-left" fill="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 46" preserveAspectRatio="none">
                     <path d="M0 23C5.78 15.215 15.805 5.897 23 0v46C15.805 40.103 5.78 30.785 0 23Z"></path>

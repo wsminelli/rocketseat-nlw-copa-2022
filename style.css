@@ -137,6 +137,7 @@ header {
     padding: 4px 4px 0px 4px;
     border-radius: 4px;
     z-index: 9997;
+    margin-bottom: 4px;
 }
 
 #cards {
@@ -288,6 +289,12 @@ header {
 }
 
 @media (max-width: 525px) {
+    header {
+        margin-bottom: 16px;
+        max-width: 375px;
+        margin-inline: auto;
+    }
+
     .swiper {
         max-width: 320px;
         padding-inline: 15px;
@@ -317,6 +324,12 @@ header {
     #menu.active #menu-fases {
         display: flex !important;
     }
+
+    #menu.active ul li {
+        opacity: 0;
+        animation: appear 0.2s forwards;
+    }
+
 }
 
 @media (min-width: 525px) and (max-width: 1012px) {
