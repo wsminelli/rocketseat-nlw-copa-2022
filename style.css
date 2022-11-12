@@ -13,33 +13,6 @@
     --bg: url(./assets/bg-red-light.jpg);
 }
 
-body.yellow {
-    --primary-color: #F7DD43;
-    --secondary-color: #E1E1E6;
-    --card-border-title-color: #746615;
-    --card-color-primary: #F7DD43; 
-    --card-bg-color: #1D1C19;
-    --bg: url(./assets/bg-yellow.jpg);
-}
-
-body.blue {
-    --primary-color: #F7DD43;
-    --secondary-color: #E1E1E6;
-    --card-border-title-color: #338AF3;
-    --card-color-primary: #338AF3;
-    --card-bg-color: #202024;
-    --bg: url(./assets/bg-blue.jpg);
-}
-
-body.green {
-    --primary-color: #F7DD43;
-    --secondary-color: #E1E1E6;
-    --card-border-title-color: #047C3F;
-    --card-color-primary: #047C3F; 
-    --card-bg-color: #1A1F1B;
-    --bg: url(./assets/bg-green.jpg);
-}
-
 ul {
     list-style: none;
 }
@@ -187,10 +160,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .card ul li figure {
-    width: 74px;
+    flex: 1;
 }
 
 .card ul li figure img {
@@ -282,7 +256,7 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start ;
     gap: 16px;
     margin-top: 32px;
     max-width: 648px;
