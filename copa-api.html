@@ -7,11 +7,11 @@
         <meta name="description" content="Calendário de jogos da Copa do Mundo no Catar 2022" />
         <title>Calendário de Jogos - NLW Copa</title>
         <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
         <link rel="stylesheet" href="./style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
         <link href="./assets/bg-red-light.jpg" rel="preload" as="image" media="(max-width: 767px)">
         <link href="./assets/bg-red-light.jpg" rel="preload" as="image" media="(min-width: 768px)">
     </head>
@@ -22,9 +22,12 @@
             <img src="./assets/logo.svg" alt="Logo da NLW">
         </header>
         <nav id="menu"></nav>
-        <section></section>
-        <main id="cards" class="swiper mySwiper"></main>
+        <main id="cards"></main>
         <footer>
+          <p>
+            Projeto desenvolvido durante evento promovido pela 
+            <a href="https://www.rocketseat.com.br/">Roceketseat</a>
+          </p>
           <p>
             Informações fornecidas pela
             <a href="https://github.com/liverday/world-cup-api">World Cup API</a>
@@ -33,37 +36,7 @@
           </p>
         </footer>
       </div>
-      <script src="./copa-api.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-      <script>
-          var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 'auto',
-            spaceBetween: 32,
-            watchOverflow: true,
-            loop: true,
-            loopedSlides: 3,
-            breakpoints: {
-              320: {
-                  slidesPerView: 1,
-                  spaceBetween: 0,
-              },
-              640: {
-                  slidesPerView: 2,
-                  spaceBetween: 16,
-              },
-              1020: {
-                  slidesPerView: 3,
-              },
-            },
-            pagination: {
-              el: ".swiper-pagination",
-              clickable: true,
-            },
-            navigation: {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            },
-          });
-        </script>
+      <script src="./copa-api.js"></script>
     </body>
 </html>

@@ -331,8 +331,10 @@ footer {
 
 footer p {
     color: #fff;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 footer p a {
-    color: var(--primary-color);
+    color: #cd2256;
 }

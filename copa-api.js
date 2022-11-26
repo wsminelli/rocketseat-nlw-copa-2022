@@ -1,3 +1,30 @@
+var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    breakpoints: {
+      320: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+      },
+      640: {
+          slidesPerView: 2,
+          spaceBetween: 16,
+      },
+      1020: {
+          slidesPerView: 3,
+          spaceBetween: 32,
+
+      },
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
 let atraso = -0.1;
 function createMenu(link, fase, nome) {
     atraso = atraso + 0.1;
@@ -32,78 +59,110 @@ document.querySelector("#menu").innerHTML = `
         ${createMenu("final", "fase-final", "Final")}
     </ul>
 `
+function getDayOfGame(date) {
+    const rawDate = new Date(date)
+    const day = rawDate.getDate()
+    const month = rawDate.getMonth()
+    const parsedDay = day.toString().padStart(2, '0')
+    const parsedMonth = (month + 1).toString().padStart(2, '0')
 
-async function getContent() {
-    try {
-        const response = await fetch('https://copa22.medeiro.tech/matches') 
-        
-        const data = await response.json()  
-        
-        show(data)
-        
-    } catch (error) {
-        console.error(error)
-    }
+    return `${parsedDay}/${parsedMonth}`
 }
 
-getContent()
+function getWeekDayOfGame(date) {
+    const weekDays = [
+        'Domingo',
+        'Segunda',
+        'Terça',
+        'Quarta',
+        'Quinta',
+        'Sexta',
+        'Sábado',
+    ]
 
+    const rawDate = new Date(`2022-${date.split("/").reverse().join("-")} 12:00:00`)
+    const day = weekDays[rawDate.getDay()]
 
-function show(games) {
-    let matches = ''
+    return day
+}
 
+function getHourDate(date) {
+    const rawDate = new Date(date)
+    
+    return `${rawDate.getHours().toString().padStart(2, "0")}:00`
+}
 
-    for( let game of games ) {
-        const time = new Date(game.date).toLocaleTimeString('pt-Br',
-                 { timeStyle: 'short', hour12: false, timeZone: 'America/Sao_Paulo' });
+fetch('https://copa22.medeiro.tech/matches')
+   .then(res => res.json())
+   .then(data => {
+        const gamesGroupedByDate = {}
+        data.forEach(game => {
+            const dayOfGame = getDayOfGame(game.date) 
+            
+            if (!gamesGroupedByDate[dayOfGame]) {
+                 gamesGroupedByDate[dayOfGame] = []
+            }
+ 
+            gamesGroupedByDate[dayOfGame].push(game)
+        });
 
-        matches += `
+        const cards = []
+        Object.entries(gamesGroupedByDate).forEach(([date, games]) => {
+            const weekDay = getWeekDayOfGame(date)
+            const gamesOfDay = games.map((game) => {
+                const hour = getHourDate(game.date)
+                return createGame(game.homeTeam, game.venue, hour, game.awayTeam);
+            })
+
+            const card = createCard(date, weekDay, gamesOfDay)
+            cards.push(card)
+        })
+
+        document.querySelector("#cards").innerHTML = `
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                ${cards.join('')}
+            </div>
+            <div class="swiper-button-next">
+                <img src="./assets/arrowRight.svg">
+            </div>
+            <div class="swiper-button-prev">
+                <img src="./assets/arrowLeft.svg">
+            </div>
+        </div>
+        `
+    });
+          
+function createGame(player1, stadium, hour, player2) {
+    return `
         <li>
             <figure>    
-                <img src="./assets/flags/icon-${game.homeTeam.name}.svg" alt="Bandeira do ${game.homeTeam.name}">
-                <figcaption>${game.homeTeam.name}</figcaption>
+                <img src="./assets/flags/icon-${player1.name?.toLowerCase()}.svg" alt="Bandeira do ${player1.name?.toLowerCase()}">
+                <figcaption>${player1.name?.toLowerCase()}</figcaption>
             </figure>
             <div class="info">
-                <span>${game.venue}<br></span>
-                <strong>${time}</strong>
+                <span>${stadium}<br></span>
+                <strong>${hour}</strong>
             </div>
             <figure> 
-                <img src="./assets/flags/icon-${game.awayTeam.name}.svg" alt="Bandeira da ${game.awayTeam.name}">
-                <figcaption>${game.awayTeam.name}</figcaption>
+                <img src="./assets/flags/icon-${player2.name?.toLowerCase()}.svg" alt="Bandeira da ${player2.name?.toLowerCase()}">
+                <figcaption>${player2.name?.toLowerCase()}</figcaption>
             </figure>
-        </li> 
+        </li>
         `
-    }
+}
 
-    // let dayDate = newDate.getDate(game.date)
-    // let delay = -0.4;
-    // function createCard(games) {
-    //     delay = delay + 0.4;
-
-    //     for( let game of games ) {
-    //         dayDate += `
-    //             <div class="card swiper-slide" style="animation-delay: ${delay}s">
-    //                 <h2>${date}<span>${day}</span></h2>
-    //                 <ul>
-    //                     ${matches}
-    //                 </ul>
-
-    //             </div>
-    //         `
-    //     }
-    // }
-
-    document.querySelector("#cards").innerHTML = `
-
-    <div class="card swiper-slide">
-                    <h2>22/11<span>domingo</span></h2>
-                    <ul>
-                        ${matches}
-                    </ul>
-
-                </div>
+let delay = -0.4;
+function createCard(date, day, games) {
+    delay = delay + 0.4;
+    return `
+    <div class="card swiper-slide" style="animation-delay: ${delay}s">
+        <h2>${date}<span>${day}</span></h2>
+        <ul>
+            ${games}
+        </ul>
+    </div>
     `
-
 }
 
 const btnMobile = document.getElementById('btn-mobile');
