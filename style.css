@@ -323,3 +323,16 @@ header {
     border-radius: 6px;
     user-select: none;
 }
+
+footer {
+    text-align: center;
+    margin-top: 32px;
+}
+
+footer p {
+    color: #fff;
+}
+
+footer p a {
+    color: var(--primary-color);
+}
