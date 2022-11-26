@@ -113,17 +113,9 @@ header {
     margin-bottom: 4px;
 }
 
-#cards {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    align-items: center;
-}
-
 .card {
     padding: 32px 23px;
     text-align: center;
-    width: fit-content;
     background: var(--card-bg-color);
     border-bottom: 2px solid var(--card-color-primary);
     border-radius: 6px;
@@ -179,7 +171,7 @@ header {
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .card ul li + li {
@@ -192,6 +184,7 @@ header {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 8px;
+    flex: 0;
 }
 
 .card ul li .info strong {
@@ -234,21 +227,15 @@ header {
     }
 }
 
-@media (min-width: 769px) {
-    #cards {
-        max-width: 1170px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content: center;
-    }
-
-}
-
 .swiper {
     max-width: 1012px;
     padding-top: 80px !important;
     margin-top: -64px;
+}
+
+.swiper-wrapper {
+    margin-inline: auto !important;
+    width: fit-content !important;
 }
 
 .games {
@@ -260,6 +247,13 @@ header {
     gap: 16px;
     margin-top: 32px;
     max-width: 648px;
+    margin-inline: auto;
+}
+
+@media (min-width: 526px) {
+    .card {
+        width: fit-content !important;
+    }
 }
 
 @media (max-width: 525px) {
@@ -271,7 +265,6 @@ header {
 
     .swiper {
         max-width: 320px;
-        padding-inline: 15px;
     }
 
     #menu {
