@@ -230,7 +230,9 @@ header {
 .swiper {
     max-width: 1012px;
     padding-top: 80px !important;
-    margin-top: -64px;
+    /* margin-top: -64px; */
+    margin-top: -48px;
+
 }
 
 .swiper-wrapper {

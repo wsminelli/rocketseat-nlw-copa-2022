@@ -12,8 +12,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-        <link href="./assets/bg-red-light.jpg" rel="preload" as="image" media="(max-width: 767px)">
-        <link href="./assets/bg-red-light.jpg" rel="preload" as="image" media="(min-width: 768px)">
+        <link href="./assets/bg-red-light.jpg" rel="preload" as="image">
     </head>
     <body>
       <div id="app">
@@ -22,7 +21,16 @@
             <img src="./assets/logo.svg" alt="Logo da NLW">
         </header>
         <nav id="menu"></nav>
-        <main id="cards"></main>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+          </div>
+          <div class="swiper-button-next">
+              <img src="./assets/arrowRight.svg">
+          </div>
+          <div class="swiper-button-prev">
+              <img src="./assets/arrowLeft.svg">
+          </div>
+      </div>
         <footer>
           <p>
             Projeto desenvolvido durante evento promovido pela 

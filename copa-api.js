@@ -1,5 +1,6 @@
 var swiper = new Swiper(".mySwiper", {
-    loop: true,
+    loop: false,
+    freeMode: true,
     breakpoints: {
       320: {
           slidesPerView: 1,
@@ -26,11 +27,11 @@ var swiper = new Swiper(".mySwiper", {
   });
 
 let atraso = -0.1;
-function createMenu(link, fase, nome) {
+function createMenu(fase, nome) {
     atraso = atraso + 0.1;
     return `
         <li style="animation-delay: ${atraso}s">
-            <a href="./${link}.html" class="${fase}">
+            <a href="#" class="${fase}" onclick="stageOitavas()">
                 <svg class="button-left" fill="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 46" preserveAspectRatio="none">
                     <path d="M0 23C5.78 15.215 15.805 5.897 23 0v46C15.805 40.103 5.78 30.785 0 23Z"></path>
                 </svg>
@@ -51,12 +52,12 @@ document.querySelector("#menu").innerHTML = `
     </svg>    
     </div>
     <ul id="menu-fases">
-        ${createMenu("index", "fase-grupo", "Fase de Grupos")}
-        ${createMenu("oitavas", "fase-oitavas", "Oitavas de Final")}
-        ${createMenu("quartas", "fase-quartas", "Quartas de Final")}
-        ${createMenu("semifinal", "fase-semifinal", "Semifinal")}
-        ${createMenu("terceiro-lugar", "fase-terceiro", "3º lugar")}
-        ${createMenu("final", "fase-final", "Final")}
+        ${createMenu("fase-grupo", "Fase de Grupos")}
+        ${createMenu("fase-oitavas", "Oitavas de Final")}
+        ${createMenu("fase-quartas", "Quartas de Final")}
+        ${createMenu("fase-semifinal", "Semifinal")}
+        ${createMenu("fase-terceiro", "3º lugar")}
+        ${createMenu("fase-final", "Final")}
     </ul>
 `
 function getDayOfGame(date) {
@@ -111,30 +112,21 @@ fetch('https://copa22.medeiro.tech/matches')
             const weekDay = getWeekDayOfGame(date)
             const gamesOfDay = games.map((game) => {
                 const hour = getHourDate(game.date)
-                return createGame(game.homeTeam, game.venue, hour, game.awayTeam);
+                return createGame(game.homeTeam, game.venue, hour, game.awayTeam, game.stageName)
             })
 
-            const card = createCard(date, weekDay, gamesOfDay)
+            const card = createCard(date, weekDay, gamesOfDay.join(''))
             cards.push(card)
         })
 
-        document.querySelector("#cards").innerHTML = `
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                ${cards.join('')}
-            </div>
-            <div class="swiper-button-next">
-                <img src="./assets/arrowRight.svg">
-            </div>
-            <div class="swiper-button-prev">
-                <img src="./assets/arrowLeft.svg">
-            </div>
-        </div>
-        `
+        document.querySelector(".swiper-wrapper").innerHTML = 
+            cards.join('')   
     });
-          
-function createGame(player1, stadium, hour, player2) {
-    return `
+ 
+var stages = "First stage"; 
+function createGame(player1, stadium, hour, player2, stage) {
+    if (stage == stages) {
+        return `
         <li>
             <figure>    
                 <img src="./assets/flags/icon-${player1.name?.toLowerCase()}.svg" alt="Bandeira do ${player1.name?.toLowerCase()}">
@@ -150,20 +142,37 @@ function createGame(player1, stadium, hour, player2) {
             </figure>
         </li>
         `
+    } else {
+        ""
+    }
+       
 }
 
 let delay = -0.4;
 function createCard(date, day, games) {
     delay = delay + 0.4;
-    return `
-    <div class="card swiper-slide" style="animation-delay: ${delay}s">
-        <h2>${date}<span>${day}</span></h2>
-        <ul>
-            ${games}
-        </ul>
-    </div>
+    
+    if (games == "") {
+        ""
+    } else {
+        return `
+        <div class="card swiper-slide" style="animation-delay: ${delay}s">
+            <h2>${date}<span>${day}</span></h2>
+            <ul>
+                ${games}
+            </ul>
+        </div>
     `
+    }
+
+    
 }
+
+function stageOitavas() {
+    stages = "Round of 16"; 
+}
+
+
 
 const btnMobile = document.getElementById('btn-mobile');
 
