@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Calendário de jogos da Copa do Mundo no Catar 2022" />
+        <title>Calendário de Jogos - NLW Copa</title>
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="./style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+        <link href="./assets/bg-red-light.jpg" rel="preload" as="image">
+    </head>
+    <body>
+      <div class="top-bar">
+        <ul>
+          <li><a href="#">Calendário</a></li>
+          <li><a href="#">Resultados</a></li>
+        </ul>
+      </div>
+      <div id="app">
+        <header>
+            <img class="logo" src="./assets/logo-qatar-2022.webp" alt="Logo da Copa do Mundo Catar" width="120" height="120">
+            <img src="./assets/logo.svg" alt="Logo da NLW">
+        </header>
+        <nav id="menu"></nav>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+          </div>
+          <div class="swiper-button-next">
+              <img src="./assets/arrowRight.svg">
+          </div>
+          <div class="swiper-button-prev">
+              <img src="./assets/arrowLeft.svg">
+          </div>
+        </div>
+        <footer>
+          <p>
+            Projeto desenvolvido durante evento promovido pela 
+            <a href="https://www.rocketseat.com.br/">Roceketseat</a>
+          </p>
+          <p>
+            Informações fornecidas pela
+            <a href="https://github.com/liverday/world-cup-api">World Cup API</a>
+            do
+            <a href="https://github.com/liverday">liverday</a> (Vitor Medeiro)
+          </p>
+        </footer>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+      <script src="./home-2.js"></script>
+    </body>
+</html>
