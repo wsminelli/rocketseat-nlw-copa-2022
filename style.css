@@ -42,24 +42,33 @@ body * {
     font-family: 'Roboto', sans-serif;
 }
 
-.top-bar {
+#top-bar {
     display: flex;
     justify-content: center;
     background-color: var(--primary-color);
-    padding: 8px;
 }
 
-.top-bar ul {
+#top-bar ul {
     display: flex;
-    gap: 16px;
 }
 
-.top-bar ul li a {
+#top-bar ul li {
+    display: flex;
+    padding: 0 16px;
+    height: 40px;
+}
+
+#top-bar ul li:hover, #top-bar ul li.active {
+    background-color: var(--card-color-primary);
+}
+
+#top-bar ul li a {
     color: var(--white);
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: .4px;
+    align-self: center;
 }
 
 #app {

@@ -60,6 +60,18 @@ document.querySelector("#menu").innerHTML = `
         ${createMenu("fase-final", "Final")}
     </ul>
 `
+
+var btnLinks = document.getElementById("top-bar");
+var links = btnLinks.getElementsByClassName("link");
+for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+
+
 function getDayOfGame(date) {
     const rawDate = new Date(date)
     const day = rawDate.getDate()

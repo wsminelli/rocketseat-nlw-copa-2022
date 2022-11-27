@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Calendário de jogos da Copa do Mundo no Catar 2022" />
-        <title>Calendário de Jogos - NLW Copa</title>
+        <meta name="description" content="Calendário de jogos da Copa do Mundo no Qatar 2022" />
+        <title>Resultados de Jogos - Qatar 2022</title>
         <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
         <link rel="stylesheet" href="./style.css">
@@ -15,10 +15,10 @@
         <link href="./assets/bg-red-light.jpg" rel="preload" as="image">
     </head>
     <body>
-      <div class="top-bar">
+      <div id="top-bar">
         <ul>
-          <li><a href="#">Calendário</a></li>
-          <li><a href="#">Resultados</a></li>
+          <li class="link"><a href="index.html">Calendário</a></li>
+          <li class="link active"><a href="resultados.html">Resultados</a></li>
         </ul>
       </div>
       <div id="app">
@@ -26,7 +26,8 @@
             <img class="logo" src="./assets/logo-qatar-2022.webp" alt="Logo da Copa do Mundo Catar" width="120" height="120">
             <img src="./assets/logo.svg" alt="Logo da NLW">
         </header>
-        <nav id="menu"></nav>
+        <h1 style="color: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, 50%); ">Em desenvolvimento</h1>
+        <!-- <nav id="menu"></nav>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
           </div>
@@ -36,7 +37,7 @@
           <div class="swiper-button-prev">
               <img src="./assets/arrowLeft.svg">
           </div>
-        </div>
+        </div> -->
         <footer>
           <p>
             Projeto desenvolvido durante evento promovido pela 
@@ -51,6 +52,6 @@
         </footer>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-      <script src="./home-2.js"></script>
+      <script src="./js/calendario.js"></script>
     </body>
 </html>

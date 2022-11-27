@@ -28,6 +28,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - HTML e CSS
 - JavaScript
+- [World Cup API](https://github.com/liverday/world-cup-api)
 
 ## 💻 Projeto
 
