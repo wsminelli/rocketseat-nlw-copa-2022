@@ -7,6 +7,8 @@
 :root {
     --primary-color: #8a1538;
     --secondary-color: #8a1538;
+    --white: #fff;
+    --black: #121214;
     --card-border-title-color: #8a1538;
     --card-color-primary: #b61c4a; 
     --card-bg-color:#E1E1E6;
@@ -19,7 +21,7 @@ ul {
 
 a {
     text-decoration: none;
-    color: #E1E1E6;
+    color: var(--card-bg-color);
 }
 
 :focus {
@@ -27,7 +29,8 @@ a {
 }
 
 body {
-    background-color: #121214;
+    position: relative;
+    background-color: var(--black);
     background-image: var(--bg);
     background-position: bottom center;
     background-repeat: no-repeat;
@@ -37,6 +40,26 @@ body {
 
 body * {
     font-family: 'Roboto', sans-serif;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-color);
+    padding: 8px;
+}
+
+.top-bar ul {
+    display: flex;
+    gap: 16px;
+}
+
+.top-bar ul li a {
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 #app {
@@ -69,11 +92,11 @@ header {
 #menu ul li svg {
     width: 20px;
     height: 40px;
-    fill: #E1E1E6;
+    fill: var(--card-bg-color);
 }
 
 #menu ul li:hover svg {
-    fill: #8a1538; 
+    fill: var(--primary-color); 
 }
 
 .button-left {
@@ -92,21 +115,21 @@ header {
 }
 
 .btn.btn-primary {
-    background: #E1E1E6;
+    background: var(--card-bg-color);
     display: flex;
     align-items: center;
     padding: 0px 2px;
-    color: #8a1538;
+    color: var(--primary-color);
 }
 
 #menu ul li:hover .btn.btn-primary {
     color: #E1E1E6;
-    background: #8a1538;
+    background: var(--primary-color);
 }
 
 #btn-mobile {
     display: none;
-    background-color: #E1E1E6;
+    background-color: var(--card-bg-color);
     padding: 4px 4px 0px 4px;
     border-radius: 4px;
     z-index: 9997;
@@ -232,6 +255,7 @@ header {
     padding-top: 80px !important;
     /* margin-top: -64px; */
     margin-top: -48px;
+    margin-bottom: 48px;
 
 }
 
@@ -319,7 +343,7 @@ header {
 .swiper-button-next, .swiper-button-prev {
     top: 24px !important;
     z-index: 9997 !important;
-    background: #E1E1E6;
+    background: var(--card-bg-color);
     width: 48px !important;
     height: 48px !important;
     border-radius: 6px;
@@ -327,16 +351,19 @@ header {
 }
 
 footer {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
-    margin-top: 32px;
 }
 
 footer p {
-    color: #fff;
+    color: var(--white);
     font-size: 14px;
     line-height: 20px;
 }
 
 footer p a {
-    color: #cd2256;
+    color: var(--card-color-primary);
 }
