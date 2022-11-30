@@ -1,31 +1,3 @@
-var swiper = new Swiper(".mySwiper", {
-    loop: false,
-    freeMode: true,
-    breakpoints: {
-      320: {
-          slidesPerView: 1,
-          spaceBetween: 0,
-      },
-      640: {
-          slidesPerView: 2,
-          spaceBetween: 16,
-      },
-      1020: {
-          slidesPerView: 3,
-          spaceBetween: 32,
-
-      },
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-
 var btnLinks = document.getElementById("top-bar");
 var links = btnLinks.getElementsByClassName("link");
 for (var i = 0; i < links.length; i++) {
@@ -124,42 +96,52 @@ fetch('https://copa22.medeiro.tech/matches')
             const gamesOfDay = games.map((game) => {
                 const hour = getHourDate(game.date)
 
-                
-
-                return createGame(game.homeTeam, game.venue, hour, game.awayTeam)
-            })
+                const gameOfStages = games.filter(game => game.stageName === "Round of 16")
             
-            const gameOfStages = games.filter(game => game.stageName.includes("Round of 16"))
-            const jogos = gameOfStages
-            console.log(jogos)
+                console.log(gameOfStages)
+
+                return createGame(game.venue, hour, game.homeTeam, game.homeTeam.goals, game.awayTeam.goals, game.awayTeam, game.status)
+            })
 
             const card = createCard(date, weekDay, gamesOfDay.join(''))
             cards.push(card)
         })
 
-        document.querySelector(".swiper-wrapper").innerHTML = 
+        document.querySelector(".games").innerHTML = 
             cards.join('')   
     });
  
 // var stages = "First stage"; 
-function createGame(player1, stadium, hour, player2) {
+function createGame(stadium, hour, player1, goals1, goals2, player2, status) {
     // if (stage == stages) {
-        return `
+    
+    if (status == "scheduled") {
+        goals1 = ""
+        goals2 = ""
+      }
+
+    return `
         <li>
-            <figure>    
-                <img src="./assets/flags/icon-${player1.name?.toLowerCase()}.svg" alt="Bandeira do ${player1.name?.toLowerCase()}">
-                <figcaption>${player1.name?.toLowerCase()}</figcaption>
-            </figure>
             <div class="info">
-                <span>${stadium}<br></span>
-                <strong>${hour}</strong>
+                <span>${stadium} ${hour}</span>
             </div>
-            <figure> 
-                <img src="./assets/flags/icon-${player2.name?.toLowerCase()}.svg" alt="Bandeira da ${player2.name?.toLowerCase()}">
-                <figcaption>${player2.name?.toLowerCase()}</figcaption>
-            </figure>
+            <div class="game-result">
+                <figure>    
+                    <img src="./assets/flags/icon-${player1.name?.toLowerCase()}.svg" alt="Bandeira do ${player1.name?.toLowerCase()}">
+                    <figcaption>${player1.name?.toLowerCase()}</figcaption>
+                </figure>
+                <div class="score">
+                    <span>${goals1}</span>
+                    X
+                    <span>${goals2}</span>
+                </div>
+                <figure> 
+                    <img src="./assets/flags/icon-${player2.name?.toLowerCase()}.svg" alt="Bandeira da ${player2.name?.toLowerCase()}">
+                    <figcaption>${player2.name?.toLowerCase()}</figcaption>
+                </figure>
+            </div>
         </li>
-        `
+    `
     // } else {
     //     ""
     // }
@@ -174,11 +156,13 @@ function createCard(date, day, games) {
         ""
     } else {
         return `
-        <div class="card swiper-slide" style="animation-delay: ${delay}s">
-            <h2>${date}<span>${day}</span></h2>
-            <ul>
-                ${games}
-            </ul>
+        <div class="card-result" style="animation-delay: ${delay}s">
+            <h2>${date} ${day}</h2>
+            <div class="card">
+                <ul>
+                    ${games}
+                </ul>
+            </div>
         </div>
     `
     }

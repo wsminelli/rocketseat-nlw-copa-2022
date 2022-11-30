@@ -145,12 +145,26 @@ header {
     margin-bottom: 4px;
 }
 
+.card-result {
+    padding: 0 8px;
+}
+
+.card-result h2 {
+    margin-bottom: 8px;
+    color: var(--white);
+    font-size: 20px;
+}
+
 .card {
     padding: 32px 23px;
     text-align: center;
     background: var(--card-bg-color);
     border-bottom: 2px solid var(--card-color-primary);
     border-radius: 6px;
+}
+
+.card-result, .card-result .card, .card-result .card ul {
+    width: 100% !important;
 }
 
 .card h2 {
@@ -187,11 +201,35 @@ header {
     flex-wrap: wrap;
 }
 
+.card-result .card ul li {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-result .card ul li .game-result {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.card-result .card ul li .game-result figure {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-result .card ul li .game-result figure:first-child {
+    flex-direction: row-reverse;
+}
+
 .card ul li figure {
     flex: 1;
 }
 
-.card ul li figure img {
+.card ul li figure img, .card-result .card ul li figure img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -204,6 +242,31 @@ header {
     font-weight: 700;
     text-transform: uppercase;
     /* white-space: nowrap; */
+}
+
+.card-result .card ul li figure figcaption {
+    font-size: 16px;
+}
+
+.score {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color)
+}
+
+.score {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.score span {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--primary-color)
 }
 
 .card ul li + li {
@@ -264,7 +327,7 @@ header {
     padding-top: 80px !important;
     /* margin-top: -64px; */
     margin-top: -48px;
-    margin-bottom: 48px;
+    margin-bottom: 64px;
 
 }
 
@@ -283,6 +346,7 @@ header {
     margin-top: 32px;
     max-width: 648px;
     margin-inline: auto;
+    margin-bottom: 64px;
 }
 
 @media (min-width: 526px) {
@@ -330,6 +394,46 @@ header {
     #menu.active ul li {
         opacity: 0;
         animation: appear 0.2s forwards;
+    }
+
+    .card-result .card ul li .game-result figure {
+        gap: 4px;
+    }
+
+    .card-result .card ul li figure figcaption {
+        font-size: 12px;
+    }
+
+    .card-result .card ul li figure img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .card-result .card ul li .game-result {
+        gap: 8px;
+    }
+    
+    .card-result .card ul {
+        width: fit-content !important;
+        margin: 0 auto;
+    }
+
+    .score {
+        font-size: 14px;
+        gap: 4px;
+    }
+    
+    .score span {
+        font-size: 16px;
+    }
+
+    .swiper, .games {
+        margin-bottom: 120px;
+    }
+
+    footer {
+        left: 0 !important;
+        transform: translateX(0) !important;
     }
 
 }
