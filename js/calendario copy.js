@@ -37,11 +37,11 @@ for (var i = 0; i < links.length; i++) {
 }  
 
 let atraso = -0.1;
-function createMenu(fase, função, nome) {
+function createMenu(fase, nome) {
     atraso = atraso + 0.1;
     return `
         <li style="animation-delay: ${atraso}s">
-            <a href="#" class="${fase}" onclick="${função}">
+            <a href="#" class="${fase}" onclick="stageOitavas()">
                 <svg class="button-left" fill="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 46" preserveAspectRatio="none">
                     <path d="M0 23C5.78 15.215 15.805 5.897 23 0v46C15.805 40.103 5.78 30.785 0 23Z"></path>
                 </svg>
@@ -62,12 +62,12 @@ document.querySelector("#menu").innerHTML = `
     </svg>    
     </div>
     <ul id="menu-fases">
-        ${createMenu("fase-grupo", "stageGrupos()", "Fase de Grupos")}
-        ${createMenu("fase-oitavas", "stageOitavas()", "Oitavas de Final")}
-        ${createMenu("fase-quartas", "stageQuartas()", "Quartas de Final")}
-        ${createMenu("fase-semifinal", "stageSemi()", "Semifinal")}
-        ${createMenu("fase-terceiro", "stageTerceiro()", "3º lugar")}
-        ${createMenu("fase-final", "stageFinal()", "Final")}
+        ${createMenu("fase-grupo", "Fase de Grupos")}
+        ${createMenu("fase-oitavas", "Oitavas de Final")}
+        ${createMenu("fase-quartas", "Quartas de Final")}
+        ${createMenu("fase-semifinal", "Semifinal")}
+        ${createMenu("fase-terceiro", "3º lugar")}
+        ${createMenu("fase-final", "Final")}
     </ul>
 `
 
@@ -104,41 +104,35 @@ function getHourDate(date) {
     return `${rawDate.getHours().toString().padStart(2, "0")}:00`
 }
 
-function createGameCards(data) {
-    const gamesGroupedByDate = {}
-    data.forEach(game => {
-        const dayOfGame = getDayOfGame(game.date) 
-        
-        if (!gamesGroupedByDate[dayOfGame]) {
-             gamesGroupedByDate[dayOfGame] = []
-        }
-
-        gamesGroupedByDate[dayOfGame].push(game)
-    });
-
-    const cards = []
-    Object.entries(gamesGroupedByDate).forEach(([date, games]) => {
-        const weekDay = getWeekDayOfGame(date)
-        const gamesOfDay = games.map((game) => {
-            const hour = getHourDate(game.date)
-
-            return createGame(game.homeTeam, game.venue, hour, game.awayTeam, game.stageName)
-        })
-
-        const card = createCard(date, weekDay, gamesOfDay.join(''))
-        cards.push(card)
-    })
-
-    document.querySelector(".swiper-wrapper").innerHTML = 
-        cards.join('')
-
-    }
-
 fetch('https://copa22.medeiro.tech/matches')
    .then(res => res.json())
    .then(data => {
-        
-        createGameCards(data)
+        const gamesGroupedByDate = {}
+        data.forEach(game => {
+            const dayOfGame = getDayOfGame(game.date) 
+            
+            if (!gamesGroupedByDate[dayOfGame]) {
+                 gamesGroupedByDate[dayOfGame] = []
+            }
+ 
+            gamesGroupedByDate[dayOfGame].push(game)
+        });
+
+        const cards = []
+        Object.entries(gamesGroupedByDate).forEach(([date, games]) => {
+            const weekDay = getWeekDayOfGame(date)
+            const gamesOfDay = games.map((game) => {
+                const hour = getHourDate(game.date)
+
+                return createGame(game.homeTeam, game.venue, hour, game.awayTeam, game.stageName)
+            })
+
+            const card = createCard(date, weekDay, gamesOfDay.join(''))
+            cards.push(card)
+        })
+
+        document.querySelector(".swiper-wrapper").innerHTML = 
+            cards.join('')
 
 
     });
@@ -168,15 +162,15 @@ function createGame(player1, stadium, hour, player2, stage) {
        
 }
 
-// let delay = -0.4;
+let delay = -0.4;
 function createCard(date, day, games) {
-    // delay = delay + 0.4;
+    delay = delay + 0.4;
     
     if (games == "") {
         ""
     } else {
         return `
-        <div class="card swiper-slide" style="animation-delay: 0s">
+        <div class="card swiper-slide" style="animation-delay: ${delay}s">
             <h2>${date}<span>${day}</span></h2>
             <ul>
                 ${games}
@@ -188,89 +182,11 @@ function createCard(date, day, games) {
   
 }
 
-function stageGrupos() {
-    stages = "First stage";
-
-    fetch('https://copa22.medeiro.tech/matches')
-   .then(res => res.json())
-   .then(data => {
-        
-        createGameCards(data)
-
-
-    });
-        
-}
-
 function stageOitavas() {
     stages = "Round of 16";
-
-    fetch('https://copa22.medeiro.tech/matches')
-   .then(res => res.json())
-   .then(data => {
-        
-        createGameCards(data)
-
-
-    });
         
 }
 
-function stageQuartas() {
-    stages = "Quarter-final";
-
-    fetch('https://copa22.medeiro.tech/matches')
-   .then(res => res.json())
-   .then(data => {
-        
-        createGameCards(data)
-
-
-    });
-        
-}
-
-function stageSemi() {
-    stages = "Semi-final";
-
-    fetch('https://copa22.medeiro.tech/matches')
-   .then(res => res.json())
-   .then(data => {
-        
-        createGameCards(data)
-
-
-    });
-        
-}
-
-function stageTerceiro() {
-    stages = "Play-off for third place";
-
-    fetch('https://copa22.medeiro.tech/matches')
-   .then(res => res.json())
-   .then(data => {
-        
-        createGameCards(data)
-
-
-    });
-        
-}
-
-function stageFinal() {
-    stages = "Final";
-
-    fetch('https://copa22.medeiro.tech/matches')
-   .then(res => res.json())
-   .then(data => {
-        
-        createGameCards(data)
-
-
-    });
-        
-}
 
 const btnMobile = document.getElementById('btn-mobile');
 
