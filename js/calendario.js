@@ -41,7 +41,7 @@ function createMenu(fase, nome) {
     atraso = atraso + 0.1;
     return `
         <li style="animation-delay: ${atraso}s">
-            <a href="#" class="${fase}" onclick="stageOitavas()">
+            <a href="#" class="${fase}">
                 <svg class="button-left" fill="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 46" preserveAspectRatio="none">
                     <path d="M0 23C5.78 15.215 15.805 5.897 23 0v46C15.805 40.103 5.78 30.785 0 23Z"></path>
                 </svg>
@@ -104,6 +104,7 @@ function getHourDate(date) {
     return `${rawDate.getHours().toString().padStart(2, "0")}:00`
 }
 
+
 fetch('https://copa22.medeiro.tech/matches')
    .then(res => res.json())
    .then(data => {
@@ -124,7 +125,7 @@ fetch('https://copa22.medeiro.tech/matches')
             const gamesOfDay = games.map((game) => {
                 const hour = getHourDate(game.date)
 
-                return createGame(game.homeTeam, game.venue, hour, game.awayTeam, game.stageName)
+                return createGame(game.homeTeam, game.venue, hour, game.awayTeam)
             })
 
             const card = createCard(date, weekDay, gamesOfDay.join(''))
@@ -132,14 +133,44 @@ fetch('https://copa22.medeiro.tech/matches')
         })
 
         document.querySelector(".swiper-wrapper").innerHTML = 
-            cards.join('')
+            cards.slice(0, 13).join('')
 
+        document.querySelector(".fase-grupo").addEventListener("click", function() {
+            document.querySelector(".swiper-wrapper").innerHTML = 
+                cards.slice(0, 13).join('')
+            });
+
+        document.querySelector(".fase-oitavas").addEventListener("click", function() {
+            document.querySelector(".swiper-wrapper").innerHTML = 
+                cards.slice(13, 17).join('')
+            });
+    
+        document.querySelector(".fase-quartas").addEventListener("click", function() {
+            document.querySelector(".swiper-wrapper").innerHTML = 
+                cards.slice(17, 19).join('')
+            });
+
+        document.querySelector(".fase-semifinal").addEventListener("click", function() {
+            document.querySelector(".swiper-wrapper").innerHTML = 
+                cards.slice(19, 21).join('')
+            });
+
+        document.querySelector(".fase-terceiro").addEventListener("click", function() {
+            document.querySelector(".swiper-wrapper").innerHTML = 
+                cards.slice(21, 22).join('')
+            });
+
+        document.querySelector(".fase-final").addEventListener("click", function() {
+            document.querySelector(".swiper-wrapper").innerHTML = 
+                cards.slice(22, 23).join('')
+            });
+        
 
     });
  
-var stages = "First stage"
-function createGame(player1, stadium, hour, player2, stage) {
-    if (stage == stages) {
+// var stages = "First stage"
+function createGame(player1, stadium, hour, player2) {
+    // if (stage == stages) {
         return `
         <li>
             <figure>    
@@ -156,9 +187,9 @@ function createGame(player1, stadium, hour, player2, stage) {
             </figure>
         </li>
         `
-    } else {
-        ""
-    }
+    // } else {
+    //     ""
+    // }
        
 }
 
@@ -182,10 +213,7 @@ function createCard(date, day, games) {
   
 }
 
-function stageOitavas() {
-    stages = "Round of 16";
-        
-}
+
 
 
 const btnMobile = document.getElementById('btn-mobile');
