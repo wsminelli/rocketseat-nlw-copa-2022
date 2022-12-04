@@ -1,0 +1,239 @@
+#app {
+    width: fit-content;
+    margin: auto;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+@keyframes appear {
+    0% {
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.card-result {
+    padding: 0 8px;
+    width: 100% !important;
+    h2 {
+        margin-bottom: 8px;
+        color: var(--white);
+        font-size: 20px;
+    }
+    + .card-result {
+        margin-top: 32px;
+    }
+    .card {
+        width: 100% !important;
+        ul {
+            width: 100% !important;
+            li {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .game-result {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 16px;
+                    figure {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        figcaption {
+                            font-size: 16px;
+                            @media (max-width: 525px) {
+                                font-size: 12px;
+                            }
+                        }
+                        img {
+                            height: 50px;
+                            border-radius: 50%;
+                            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+                            @media (max-width: 525px) {
+                                width: 25px;
+                                height: 25px;
+                            }
+                        }
+                        &:first-child {
+                            flex-direction: row-reverse;
+                        }
+                        @media (max-width: 525px) {
+                            gap: 4px;
+                        }
+                    }
+                    @media (max-width: 525px) {
+                        gap: 8px;
+                    }
+                }
+            }
+            @media (max-width: 525px) {
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+.card {
+    padding: 32px 23px;
+    text-align: center;
+    background: var(--card-bg-color);
+    border-bottom: 2px solid var(--card-color-primary);
+    border-radius: 6px;
+    opacity: 0;
+    animation: appear 0.2s forwards;
+    h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 8px 16px;
+        border: 1px solid var(--card-border-title-color);
+        border-radius: 6px;
+        width: fit-content;
+        margin-inline: auto;
+        margin-bottom: 40px;
+        color: var(--primary-color);
+        transition: transform 0.3s;
+        span {
+            color: var(--secondary-color);
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 270px;
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            figure {
+                flex: 1;
+                transition: transform 0.3s;
+                figcaption {
+                    color: #333;
+                    font-size: 12px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                }
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+                }
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+            + li {
+                padding-top: 24px;
+                border-top: 1px solid #c1c1c1;
+            }
+            .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-bottom: 8px;
+                flex: 0;
+                transition: transform 0.3s;
+                strong {
+                    font-weight: 900;
+                    font-size: 36px;
+                    line-height: 125%;
+                    color: var(--secondary-color);
+                }
+                span {
+                    font-size: 10px;
+                    line-height: 12px;
+                    color: #787878;
+                }
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+    @media (min-width: 526px) {
+        width: fit-content !important;
+    }
+}
+
+.score {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    span {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--primary-color)
+    }
+    @media (max-width: 525px) {
+        font-size: 14px;
+        gap: 4px;
+        span {
+            font-size: 16px;
+        }
+    }
+}
+
+.swiper {
+    max-width: 1012px;
+    padding-top: 80px !important;
+    margin-top: -48px;
+    margin-bottom: 64px;
+    .swiper-wrapper {
+        margin-inline: auto !important;
+        width: fit-content !important;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        top: 24px !important;
+        z-index: 9997 !important;
+        background: var(--card-bg-color);
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 6px;
+        user-select: none;
+        &::after {
+            content: "" !important;
+        }
+    }
+    @media (min-width: 525px) and (max-width: 1012px) {
+        max-width: 648px;
+        padding-inline: 15px;
+    }
+    @media (max-width: 525px) {
+        max-width: 320px;
+        margin-bottom: 120px;
+    }
+}
+
+.games {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start ;
+    gap: 16px;
+    margin-top: 32px;
+    max-width: 648px;
+    margin-inline: auto;
+    margin-bottom: 64px;
+    @media (max-width: 525px) {
+        margin-bottom: 120px;
+    }
+}

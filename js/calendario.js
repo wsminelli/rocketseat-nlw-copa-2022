@@ -104,7 +104,6 @@ function getHourDate(date) {
     return `${rawDate.getHours().toString().padStart(2, "0")}:00`
 }
 
-
 fetch('https://copa22.medeiro.tech/matches')
    .then(res => res.json())
    .then(data => {
@@ -127,50 +126,48 @@ fetch('https://copa22.medeiro.tech/matches')
 
                 return createGame(game.homeTeam, game.venue, hour, game.awayTeam)
             })
-
+            
             const card = createCard(date, weekDay, gamesOfDay.join(''))
             cards.push(card)
         })
 
         document.querySelector(".swiper-wrapper").innerHTML = 
-            cards.slice(0, 13).join('')
+            cards.join('')
+            console.log(cards)
+});
 
-        document.querySelector(".fase-grupo").addEventListener("click", function() {
-            document.querySelector(".swiper-wrapper").innerHTML = 
-                cards.slice(0, 13).join('')
-            });
+        // document.querySelector(".fase-grupo").addEventListener("click", () => 
+        //     document.querySelector(".swiper-wrapper").innerHTML = 
+        //         cards.push(card.filter(card => card.stage === 'First stage'))
+        //     );
 
-        document.querySelector(".fase-oitavas").addEventListener("click", function() {
-            document.querySelector(".swiper-wrapper").innerHTML = 
-                cards.slice(13, 17).join('')
-            });
+        // document.querySelector(".fase-oitavas").addEventListener("click", () => 
+            
+        //     document.querySelector(".swiper-wrapper").innerHTML = 
+        //     'text'
+        //     );
     
-        document.querySelector(".fase-quartas").addEventListener("click", function() {
-            document.querySelector(".swiper-wrapper").innerHTML = 
-                cards.slice(17, 19).join('')
-            });
+        // document.querySelector(".fase-quartas").addEventListener("click", () => 
+        //     document.querySelector(".swiper-wrapper").innerHTML = 
+        //         cards.slice(17, 19).join('')
+        //     );
 
-        document.querySelector(".fase-semifinal").addEventListener("click", function() {
-            document.querySelector(".swiper-wrapper").innerHTML = 
-                cards.slice(19, 21).join('')
-            });
+        // document.querySelector(".fase-semifinal").addEventListener("click", () => 
+        //     document.querySelector(".swiper-wrapper").innerHTML = 
+        //         cards.slice(19, 21).join('')
+        //     );
 
-        document.querySelector(".fase-terceiro").addEventListener("click", function() {
-            document.querySelector(".swiper-wrapper").innerHTML = 
-                cards.slice(21, 22).join('')
-            });
+        // document.querySelector(".fase-terceiro").addEventListener("click", () => 
+        //     document.querySelector(".swiper-wrapper").innerHTML = 
+        //         cards.slice(21, 22).join('')
+        //     );
 
-        document.querySelector(".fase-final").addEventListener("click", function() {
-            document.querySelector(".swiper-wrapper").innerHTML = 
-                cards.slice(22, 23).join('')
-            });
-        
-
-    });
+        // document.querySelector(".fase-final").addEventListener("click", () => 
+        //     document.querySelector(".swiper-wrapper").innerHTML = 
+        //         cards.slice(22, 23).join('')
+        //     );
  
-// var stages = "First stage"
 function createGame(player1, stadium, hour, player2) {
-    // if (stage == stages) {
         return `
         <li>
             <figure>    
@@ -187,34 +184,19 @@ function createGame(player1, stadium, hour, player2) {
             </figure>
         </li>
         `
-    // } else {
-    //     ""
-    // }
-       
 }
 
-let delay = -0.4;
+let delay = -0.4; 
 function createCard(date, day, games) {
-    delay = delay + 0.4;
-    
-    if (games == "") {
-        ""
-    } else {
         return `
-        <div class="card swiper-slide" style="animation-delay: ${delay}s">
+        <div class="card swiper-slide" style="animation-delay: 0s">
             <h2>${date}<span>${day}</span></h2>
             <ul>
                 ${games}
             </ul>
         </div>
     `
-    }
-
-  
-}
-
-
-
+} 
 
 const btnMobile = document.getElementById('btn-mobile');
 

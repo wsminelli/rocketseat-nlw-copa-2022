@@ -1,0 +1,25 @@
+#top-bar {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-color);
+    ul {
+        display: flex;
+        li {
+            display: flex;
+            padding: 0 16px;
+            height: 40px;
+            cursor: pointer;
+            a {
+                color: var(--white);
+                font-size: 14px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: .4px;
+                align-self: center;
+            }
+            &:hover, &.active {
+                background-color: var(--card-color-primary);
+            }
+        }
+    }
+}

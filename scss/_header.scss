@@ -1,0 +1,9 @@
+header {
+    text-align: center;
+    user-select: none;
+    @media (max-width: 525px) {
+        margin-bottom: 16px;
+        max-width: 375px;
+        margin-inline: auto;
+    }
+}

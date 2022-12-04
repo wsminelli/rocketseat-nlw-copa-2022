@@ -1,0 +1,19 @@
+footer {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    p {
+        color: var(--white);
+        font-size: 14px;
+        line-height: 20px;
+        a {
+            color: var(--card-color-primary);
+        }
+    }
+    @media (max-width: 525px) {
+        left: 0 !important;
+        transform: translateX(0) !important;
+    }
+}

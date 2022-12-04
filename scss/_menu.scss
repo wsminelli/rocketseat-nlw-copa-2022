@@ -1,0 +1,87 @@
+#menu {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    #btn-mobile {
+        display: none;
+        background-color: var(--card-bg-color);
+        padding: 4px 4px 0px 4px;
+        border-radius: 4px;
+        z-index: 9997;
+        margin-bottom: 4px;
+        @media (max-width: 525px) {
+            display: block;
+        }
+    }
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        z-index: 9999;
+        flex-wrap: wrap;
+        li {
+            svg {
+                width: 20px;
+                height: 40px;
+                fill: var(--card-bg-color);
+                &.button-left {
+                    transform: translateX(0.4px);
+                }
+                &.button-right {
+                    transform: translateX(-0.4px);
+                }
+            }
+            a {
+                font-size: 14px;
+                font-weight: 700;;
+                text-transform: uppercase;
+                display: flex;
+                .btn.btn-primary {
+                    background: var(--card-bg-color);
+                    display: flex;
+                    align-items: center;
+                    padding: 0px 2px;
+                    color: var(--primary-color);
+                }
+            }
+            &:hover {
+                svg {
+                    fill: var(--primary-color); 
+                }
+                .btn.btn-primary {
+                    color: #E1E1E6;
+                    background: var(--primary-color);
+                }
+            }
+        }
+        @media (min-width: 525px) and (max-width: 1012px) {
+            max-width: 72%;
+        }
+        @media (max-width: 525px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &#menu-fases {
+                display: none !important;
+            }
+        }
+    }
+    @media (max-width: 525px) {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        &.active {
+            ul {
+                &#menu-fases {
+                    display: flex !important;
+                }
+                li {
+                    opacity: 0;
+                    animation: appear 0.2s forwards;
+                }
+            }
+        }
+    }
+}
